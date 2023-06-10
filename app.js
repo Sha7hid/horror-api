@@ -17,4 +17,4 @@ app.use("/api/horror", require("./routes/horror"));
 app.listen(port);
 app.get("/", (req,res)=>{
         console.log("Working");
-        }
+        });
