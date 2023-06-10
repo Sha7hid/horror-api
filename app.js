@@ -15,6 +15,4 @@ console.log({ port });
 // Routes
 app.use("/api/horror", require("./routes/horror"));
 app.listen(port);
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
+
