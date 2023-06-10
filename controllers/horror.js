@@ -1,14 +1,14 @@
 const { horror } = require("../models/horror");
 
 const getAllHorror = (req, res, next) => {
-  horror.find({}, (err, data) => {
-    if (!err) {
+  horror.find().then(function(data){
       res.send(data);
-    } else {
+    }).catch(function(err) {
       console.log(err);
-    }
-  });
+    });
+
 };
+
 
 const saveHorror = (req, res, next) => {
   const hor = new horror({
