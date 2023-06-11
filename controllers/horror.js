@@ -33,13 +33,12 @@ const saveHorror = (req, res, next) => {
 };
 
 const getHorror = (req, res, next) => {
-  horror.findById(req.params.id, (err, data) => {
-    if (!err) {
+  horror.findById(req.params.id).then(function(data) {
       res.send(data);
-    } else {
+    }).catch(function(err){ 
       console.log(err);
-    }
-  });
+    });
+  
 };
 
 const updateHorror = (req, res, next) => {
@@ -52,9 +51,8 @@ const updateHorror = (req, res, next) => {
   horror.findByIdAndUpdate(
     req.params.id,
     { $set: hor },
-    { new: true },
-    (err, data) => {
-      if (!err) {
+    { new: true }).then(function(data)  {
+     
         res
           .status(200)
           .json({
@@ -62,16 +60,14 @@ const updateHorror = (req, res, next) => {
             message: "Horror Movie Updated Successfully ",
             updatehorror: data,
           });
-      } else {
+      }).catch(function(err) {
         console.log(err);
-      }
-    }
-  );
+      })
+  
 };
 
 const deleteHorror = (req, res, next) => {
-  horror.findByIdAndDelete(req.params.id, (err, data) => {
-    if (!err) {
+  horror.findByIdAndDelete(req.params.id).then(function(data) {
       res
         .status(200)
         .json({
@@ -79,10 +75,10 @@ const deleteHorror = (req, res, next) => {
           message: "Horror Movie Deleted Successfully",
           deletehorror: data,
         });
-    } else {
+    }).catch(function(err) {
       console.log(err);
-    }
-  });
+    })
+
 };
 
 module.exports = {
