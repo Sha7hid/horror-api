@@ -17,8 +17,7 @@ const saveHorror = (req, res, next) => {
     release_year: req.body.release_year,
     image: req.body.image,
   });
-  hor.save((err, data) => {
-    if (!err) {
+  hor.save().then(function(data){
       res
         .status(200)
         .json({
@@ -26,10 +25,11 @@ const saveHorror = (req, res, next) => {
           message: "Horror Movie Added Successfully",
           addhorror: data,
         });
-    } else {
-      console.log(err);
-    }
-  });
+        
+       }).catch(function(err) {
+          console.log(err);
+        });
+
 };
 
 const getHorror = (req, res, next) => {
