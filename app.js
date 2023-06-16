@@ -17,7 +17,7 @@ const connectDB = require("./config/db");
 const mongo_uri = `mongodb+srv://shahid:arthur#540913@cluster0.ggcnvuy.mongodb.net/film-api`;
 
 connectDB();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 443;
 console.log({ port });
 // Routes
 app.use("/api/horror", require("./routes/horror"));
